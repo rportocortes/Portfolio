@@ -55,6 +55,8 @@ function App() {
 
   return (
     <div className={`page ${theme}`}>
+      <PlexusBackground theme={theme} />
+
       <header className="header">
         <nav className="navbar">
           <a href="#home" className="logo">
@@ -92,8 +94,6 @@ function App() {
 
       <main>
         <section id="home" className="hero">
-          <PlexusBackground theme={theme} />
-
           <div className="heroLeft">
             <div className="heroEyebrow">{content.greeting}</div>
             

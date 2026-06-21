@@ -39,15 +39,14 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
     let rafId = 0;
 
     const init = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      width = parent.clientWidth;
-      height = parent.clientHeight;
+      // dimensiona pela própria caixa do canvas (controlada por CSS),
+      // assim ele cobre toda a largura/altura definidas no estilo
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      if (width === 0 || height === 0) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // densidade proporcional à área, com limites de segurança
@@ -73,7 +72,7 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
           const b = points[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.18;
+            const alpha = (1 - dist / maxDist) * 0.1;
             ctx.strokeStyle = `rgba(${rgb}, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -85,7 +84,7 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
       }
 
       // pontos
-      ctx.fillStyle = `rgba(${rgb}, 0.55)`;
+      ctx.fillStyle = `rgba(${rgb}, 0.38)`;
       for (const p of points) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
