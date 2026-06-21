@@ -38,17 +38,9 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
     let points: Point[] = [];
     let rafId = 0;
 
-    const init = () => {
-      // dimensiona pela própria caixa do canvas (controlada por CSS),
-      // assim ele cobre toda a largura/altura definidas no estilo
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
-      if (width === 0 || height === 0) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    let lastWidth = 0;
 
+    const createPoints = () => {
       // densidade proporcional à área, com limites de segurança
       const count = Math.min(
         90,
@@ -62,6 +54,32 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
       }));
     };
 
+    const resize = () => {
+      // dimensiona pela própria caixa do canvas (controlada por CSS)
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      if (w === 0 || h === 0) return;
+      width = w;
+      height = h;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Só recria os pontos quando a LARGURA muda. Assim a barra de
+      // endereço do celular (que muda só a altura ao rolar) não
+      // reinicia a animação — os pontos seguem de onde estavam.
+      if (points.length === 0 || w !== lastWidth) {
+        lastWidth = w;
+        createPoints();
+      } else {
+        for (const p of points) {
+          if (p.x > width) p.x = width;
+          if (p.y > height) p.y = height;
+        }
+      }
+    };
+
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
@@ -72,7 +90,7 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
           const b = points[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.1;
+            const alpha = (1 - dist / maxDist) * 0.07;
             ctx.strokeStyle = `rgba(${rgb}, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -84,7 +102,7 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
       }
 
       // pontos
-      ctx.fillStyle = `rgba(${rgb}, 0.38)`;
+      ctx.fillStyle = `rgba(${rgb}, 0.26)`;
       for (const p of points) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
@@ -103,14 +121,17 @@ function PlexusBackground({ theme }: PlexusBackgroundProps) {
       rafId = requestAnimationFrame(step);
     };
 
-    init();
+    resize();
     if (prefersReduced) {
       render(); // frame estático para quem prefere menos movimento
     } else {
       rafId = requestAnimationFrame(step);
     }
 
-    const handleResize = () => init();
+    const handleResize = () => {
+      resize();
+      if (prefersReduced) render();
+    };
     window.addEventListener("resize", handleResize);
 
     return () => {
