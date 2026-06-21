@@ -8,6 +8,13 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge antigo / IE */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome / Edge / Safari */
 }
 
 :root {
@@ -42,6 +49,8 @@ body {
   font-family: "Inter", Arial, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge antigo / IE */
 }
 
 a {
@@ -169,7 +178,9 @@ main {
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  /* desconta o padding-top do <main> (100px) para o Hero caber na 1ª dobra
+     e a seta (bottom: 72px) ficar visível dentro da tela */
+  min-height: calc(100vh - 100px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -186,7 +197,7 @@ main {
   max-width: 820px;
   position: relative;
   z-index: 2;
-  transform: translateY(-4vh); /* sobe levemente o bloco para priorizar conteúdo */
+  transform: translateY(-9vh); /* sobe levemente o bloco para priorizar conteúdo */
 }
 
 .tag {
@@ -202,8 +213,9 @@ main {
 .hero h1 {
   max-width: 820px;
   font-size: clamp(72px, 8vw, 108px);
-  line-height: 0.92;
-  letter-spacing: -0.055em;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  word-spacing: -0.1em; /* puxa "Porto" para perto de "Rafael" */
   margin: 0;
   margin-bottom: 0;
   color: var(--text);
@@ -261,7 +273,7 @@ main {
   white-space: nowrap;
   overflow: hidden;
   width: 0ch;
-  animation: typing 2.2s steps(20, end) forwards;
+  animation: typing 2s steps(17, end) forwards;
 }
 
 @keyframes typing {
@@ -269,7 +281,7 @@ main {
     width: 0ch;
   }
   100% {
-    width: 20ch;
+    width: 17ch;
   }
 }
 
@@ -299,9 +311,9 @@ main {
   z-index: 2;
 }
 
-.heroSocials {
+.socialLinks {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   margin-top: 14px; /* reduzido */
   margin-bottom: 0;
   align-items: center;
@@ -309,41 +321,54 @@ main {
   z-index: 2;
 }
 
-.socialIcon {
+.socialLink {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--text);
-  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
-.socialIcon:hover,
-.socialIcon:focus-visible {
-  background-color: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.24);
-  transform: translateY(-3px);
+.socialLink:hover,
+.socialLink:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.085);
 }
 
-.heroButtons {
+.socialLink svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.socialLink path {
+  fill: currentColor;
+}
+
+.heroActions {
   margin-top: 18px; /* reduzido para caber na dobra */
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   position: relative;
   z-index: 2;
   flex-wrap: wrap;
 }
 
+.ctaButton,
 .primaryButton,
 .secondaryButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 12px;
   border-radius: 14px;
   font-weight: 800;
   transition: all 0.3s ease;
@@ -351,6 +376,24 @@ main {
   cursor: pointer;
   height: 58px;
   font-size: 16px;
+}
+
+.primaryButton svg,
+.secondaryButton svg,
+.ctaButton svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.secondaryButton path,
+.ctaButton path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .primaryButton {
@@ -375,6 +418,52 @@ main {
   background-color: rgba(0, 0, 0, 0.6);
   border-color: rgba(255, 255, 255, 0.28);
   transform: translateY(-2px);
+}
+
+.scrollIndicator {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  animation: scrollBounce 1.8s ease-in-out infinite;
+  transition: color 0.2s ease;
+}
+
+.scrollIndicator:hover,
+.scrollIndicator:focus-visible {
+  color: var(--text);
+}
+
+.scrollIndicator svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.scrollIndicator path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
 }
 
 .section {
@@ -521,17 +610,22 @@ main {
     line-height: 1.6;
   }
 
-  .heroSocials {
+  .socialLinks {
     margin: 16px 0;
     gap: 16px;
   }
 
-  .socialIcon {
-    width: 36px;
-    height: 36px;
+  .socialLink {
+    width: 48px;
+    height: 48px;
   }
 
-  .heroButtons {
+  .socialLink svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .heroActions {
     margin-top: 20px;
     gap: 12px;
     flex-wrap: wrap;
