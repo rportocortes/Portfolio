@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PlexusBackground from "./PlexusBackground";
 
 function App() {
   const [language, setLanguage] = useState<"pt" | "en">("pt");
@@ -91,14 +92,7 @@ function App() {
 
       <main>
         <section id="home" className="hero">
-          <div className="codeBackground" aria-hidden="true">
-            <span>const dev = "Rafael Porto";</span>
-            <span>npm run dev</span>
-            <span>git commit -m "portfolio"</span>
-            <span>SELECT * FROM projects;</span>
-            <span>{'function createApi() { return true; }'}</span>
-            <span>const skills = ["JS", "React", "SQL"];</span>
-          </div>
+          <PlexusBackground theme={theme} />
 
           <div className="heroLeft">
             <div className="heroEyebrow">{content.greeting}</div>
