@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PlexusBackground from "./PlexusBackground";
+import StackSection from "./StackSection";
 
 function App() {
   const [language, setLanguage] = useState<"pt" | "en">("pt");
@@ -9,13 +10,11 @@ function App() {
     language === "pt"
       ? [
           { label: "Início", href: "#home" },
-          { label: "Sobre", href: "#about" },
           { label: "Habilidades", href: "#skills" },
           { label: "Projetos", href: "#projects" },
         ]
       : [
           { label: "Home", href: "#home" },
-          { label: "About", href: "#about" },
           { label: "Skills", href: "#skills" },
           { label: "Projects", href: "#projects" },
         ];
@@ -171,15 +170,7 @@ function App() {
           </a>
         </section>
 
-        <section id="about" className="section">
-          <h2>{language === "pt" ? "Sobre mim" : "About me"}</h2>
-
-          <p>
-            {language === "pt"
-              ? "Sou estudante de Análise e Desenvolvimento de Sistemas e estou construindo minha base em programação com foco em backend. Atualmente estudo JavaScript, React, banco de dados, APIs e GitHub."
-              : "I'm an ADS student building my foundation in programming with a focus on backend development. Currently studying JavaScript, React, databases, APIs and GitHub."}
-          </p>
-        </section>
+        <StackSection language={language} />
       </main>
     </div>
   );

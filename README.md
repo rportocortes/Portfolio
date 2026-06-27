@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# Portfólio — Rafael Porto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site de portfólio pessoal desenvolvido com React, TypeScript e Vite. Design minimalista, dark/light mode e fundo animado.
 
-Currently, two official plugins are available:
+## ✨ Destaques
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🎨 Fundo animado em estilo *plexus* (canvas)
+- 🌗 Alternância de tema claro/escuro
+- 🌎 Suporte a dois idiomas (PT / EN)
+- 📱 Layout totalmente responsivo
 
-## React Compiler
+## 🛠️ Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/)
+- CSS
 
-## Expanding the ESLint configuration
+## 🚀 Como rodar localmente
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pré-requisito: [Node.js](https://nodejs.org/) 18+.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# clonar o repositório
+git clone https://github.com/rportocortes/Portfolio.git
+cd Portfolio
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# instalar as dependências
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# iniciar o servidor de desenvolvimento
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A aplicação ficará disponível em `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📜 Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Comando           | Descrição                                  |
+| ----------------- | ------------------------------------------ |
+| `npm run dev`     | Inicia o servidor de desenvolvimento (HMR) |
+| `npm run build`   | Gera a versão de produção em `dist/`       |
+| `npm run preview` | Pré-visualiza a build de produção          |
+| `npm run lint`    | Roda o ESLint no projeto                   |
+
+## 📫 Contato
+
+- **GitHub:** [@rportocortes](https://github.com/rportocortes)
+- **LinkedIn:** [Rafael Porto](https://www.linkedin.com/in/rafael-porto-543bba397)
+- **E-mail:** rafael@engrenagemdigital.com.br
