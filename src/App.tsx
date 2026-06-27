@@ -1,10 +1,12 @@
 import { useState } from "react";
 import PlexusBackground from "./PlexusBackground";
 import StackSection from "./StackSection";
+import ProjectsSection from "./ProjectsSection";
 
 function App() {
   const [language, setLanguage] = useState<"pt" | "en">("pt");
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const theme = "dark" as const;
 
   const menuLinks =
     language === "pt"
@@ -21,10 +23,6 @@ function App() {
 
   const toggleLanguage = () => {
     setLanguage((current) => (current === "pt" ? "en" : "pt"));
-  };
-
-  const toggleTheme = () => {
-    setTheme((current) => (current === "dark" ? "light" : "dark"));
   };
 
   const heroContent = {
@@ -64,18 +62,19 @@ function App() {
 
           <div className="navSeparator" aria-hidden="true"></div>
 
-          <div className="navLinks">
+          <div className={`navLinks ${menuOpen ? "open" : ""}`}>
             {menuLinks.map((link, index) => (
               <a
                 key={link.href}
                 href={link.href}
                 className={index === 0 ? "active" : ""}
+                onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
           </div>
-          
+
           <div className="headerActions">
             <button
               type="button"
@@ -84,8 +83,19 @@ function App() {
             >
               {language.toUpperCase()}
             </button>
-            <button type="button" className="smallButton" onClick={toggleTheme}>
-              {theme === "dark" ? "☾" : "☀"}
+
+            <button
+              type="button"
+              className="navToggle"
+              aria-label={language === "pt" ? "Abrir menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              <span className={`navToggleIcon ${menuOpen ? "open" : ""}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
             </button>
           </div>
         </nav>
@@ -171,6 +181,8 @@ function App() {
         </section>
 
         <StackSection language={language} />
+
+        <ProjectsSection language={language} />
       </main>
     </div>
   );

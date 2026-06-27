@@ -29,6 +29,8 @@ body::-webkit-scrollbar {
   --header-bg: rgba(0, 0, 0, 0.4);
   --header-text: #f8fafc;
   --surface-2: #121214;
+  --star-color: rgba(255, 255, 255, 0.75);
+  --surface-card: #0e0e11;
 }
 
 .page {
@@ -47,6 +49,8 @@ body::-webkit-scrollbar {
   --header-bg: rgba(255, 255, 255, 0.4);
   --header-text: #0f172a;
   --surface-2: #eceef1;
+  --star-color: rgba(15, 23, 42, 0.5);
+  --surface-card: #ffffff;
 }
 
 body {
@@ -91,6 +95,7 @@ a {
   padding: 0 14px; /* mais compacto */
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(16px);
+  position: relative; /* âncora do menu mobile */
 }
 
 .logo {
@@ -173,6 +178,61 @@ a {
 .smallButton:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* botão hambúrguer (aparece só no mobile) */
+.navToggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  width: 44px;
+  height: 40px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.navToggleIcon {
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.navToggleIcon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+}
+
+.navToggleIcon span:nth-child(1) {
+  top: 0;
+}
+
+.navToggleIcon span:nth-child(2) {
+  top: 5px;
+}
+
+.navToggleIcon span:nth-child(3) {
+  top: 10px;
+}
+
+.navToggleIcon.open span:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.navToggleIcon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navToggleIcon.open span:nth-child(3) {
+  top: 5px;
+  transform: rotate(-45deg);
 }
 
 main {
@@ -575,6 +635,170 @@ main {
   }
 }
 
+/* ---------- Seção Projetos (terceira parte, cards de destaque) ---------- */
+.projectsSection {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 96px;
+  background: var(--bg);
+}
+
+.projectsInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* mini cometas / estrelas cadentes no fundo da seção */
+.projectsStars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.comet {
+  position: absolute;
+  width: 90px;
+  height: 1px;
+  border-radius: 999px;
+  color: var(--star-color);
+  background: linear-gradient(to right, transparent, currentColor);
+  opacity: 0;
+  animation: cometFall linear infinite;
+}
+
+.comet::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px 1px currentColor;
+  transform: translateY(-50%);
+}
+
+@keyframes cometFall {
+  0% {
+    transform: rotate(135deg) translateX(-80px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(135deg) translateX(300px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectsStars {
+    display: none;
+  }
+}
+
+.projectFeatureList {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.projectFeature {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px 34px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-card);
+  transition: border-color 0.25s ease;
+}
+
+.projectFeature:hover {
+  border-color: var(--border-strong);
+}
+
+.projectFeatureTop {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.projectFeatureName {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.projectAward {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 6px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.08);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.projectFeatureDesc {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.projectLink {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.projectLink svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.projectLink:hover svg {
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 768px) {
+  .projectsSection {
+    padding: 80px 0 64px;
+  }
+
+  .projectFeatureList {
+    grid-template-columns: 1fr;
+  }
+
+  .projectFeatureName {
+    font-size: 26px;
+  }
+}
+
 .heroContent {
   position: relative;
   z-index: 2;
@@ -646,8 +870,41 @@ main {
     display: none;
   }
 
+  /* menu vira dropdown abaixo da navbar */
   .navLinks {
-    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 10px;
+    background: rgba(8, 8, 10, 0.96);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .navLinks.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .navLinks a {
+    font-size: 16px;
+    padding: 13px 16px;
+    border-radius: 10px;
+  }
+
+  .navToggle {
+    display: inline-flex;
   }
 
   .logo {
@@ -662,6 +919,11 @@ main {
   .hero {
     gap: 16px;
     padding: 0;
+    overflow: visible; /* não corta conteúdo em telas baixas */
+  }
+
+  .heroLeft {
+    transform: none; /* evita empurrar o conteúdo para fora */
   }
 
   .hero h1 {
@@ -714,5 +976,65 @@ main {
   .secondaryButton {
     padding: 12px 18px;
     font-size: 14px;
+  }
+}
+
+/* ---------- Tablets ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main {
+    padding: 100px 40px 64px;
+  }
+
+  .stackInner {
+    padding: 64px 40px;
+  }
+
+  .projectFeatureList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Telas pequenas ---------- */
+@media (max-width: 480px) {
+  main {
+    padding: 92px 18px 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 13vw, 56px);
+  }
+
+  .heroDescription {
+    font-size: 15px;
+  }
+
+  .heroActions {
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .stackInner {
+    padding: 48px 18px;
+  }
+
+  .stackGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectFeature {
+    padding: 26px 22px;
+  }
+
+  .projectFeatureName {
+    font-size: 24px;
+  }
+
+  .projectAward {
+    font-size: 12px;
   }
 }
