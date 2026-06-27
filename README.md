@@ -25,8 +25,6 @@ npm install
 npm run dev
 ```
 
-A aplicação ficará disponível em `http://localhost:5173`.
-
 ## 📜 Scripts
 
 | Comando           | Descrição                                  |
