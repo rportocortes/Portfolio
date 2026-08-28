@@ -263,7 +263,7 @@ main {
   max-width: 820px;
   position: relative;
   z-index: 2;
-  transform: translateY(-3vh); /* sobe levemente o bloco sem cortar o eyebrow */
+  transform: translateY(-6vh); /* sobe levemente o bloco sem cortar o eyebrow */
 }
 
 .tag {
@@ -299,6 +299,7 @@ main {
 .heroEyebrow {
   display: block;
   margin-bottom: 16px; /* reduzido */
+  padding-left: 4px; /* alinha opticamente com a inicial do h1 */
   color: rgba(255, 255, 255, 0.58);
   font-size: 13px;
   font-weight: 800;
