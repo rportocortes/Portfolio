@@ -31,14 +31,6 @@ const categories: Category[] = [
     ],
   },
   {
-    titlePt: "Frontend",
-    titleEn: "Frontend",
-    items: [
-      { name: "HTML", slug: "html5" },
-      { name: "CSS", slug: "css" },
-    ],
-  },
-  {
     titlePt: "Backend",
     titleEn: "Backend",
     items: [{ name: "Node.js", slug: "nodedotjs" }],
@@ -46,9 +38,16 @@ const categories: Category[] = [
   {
     titlePt: "Banco de Dados",
     titleEn: "Databases",
+    items: [{ name: "PostgreSQL", slug: "postgresql" }],
+  },
+  {
+    titlePt: "Ferramentas",
+    titleEn: "Tools",
     items: [
-      { name: "PostgreSQL", slug: "postgresql" },
-      { name: "Railway", slug: "railway" },
+      { name: "Git", slug: "git" },
+      { name: "GitHub", slug: "github" },
+      { name: "n8n", slug: "n8n" },
+      { name: "Figma", slug: "figma" },
     ],
   },
 ];
