@@ -25,6 +25,25 @@ function App() {
     setLanguage((current) => (current === "pt" ? "en" : "pt"));
   };
 
+  /** Rola até a seção sem sujar a URL com "#home", "#skills" etc. */
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (!href.startsWith("#")) return;
+    event.preventDefault();
+    setMenuOpen(false);
+    const id = href.slice(1);
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    // remove o hash da URL sem recarregar
+    history.replaceState(null, "", window.location.pathname);
+  };
+
   const heroContent = {
     pt: {
       greeting: "Olá, me chamo",
@@ -56,7 +75,11 @@ function App() {
 
       <header className="header">
         <nav className="navbar">
-          <a href="#home" className="logo">
+          <a
+            href="#home"
+            className="logo"
+            onClick={(e) => handleNavClick(e, "#home")}
+          >
             RP
           </a>
 
@@ -68,7 +91,7 @@ function App() {
                 key={link.href}
                 href={link.href}
                 className={index === 0 ? "active" : ""}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>
@@ -153,7 +176,11 @@ function App() {
             </div>
 
             <div className="heroActions">
-              <a href="#projects" className="primaryButton">
+              <a
+                href="#projects"
+                className="primaryButton"
+                onClick={(e) => handleNavClick(e, "#projects")}
+              >
                 {content.projectsBtn}
                 <svg className="btnArrow" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                   <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
