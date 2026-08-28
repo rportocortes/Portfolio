@@ -41,9 +41,9 @@ const achievements: Achievement[] = [
     name: "AutoCare",
     award: "Startup Weekend Anápolis · 1º lugar",
     descPt:
-      "Como integrante do time da AutoCare, participei da validação da ideia, do desenvolvimento do MVP e da apresentação do pitch final durante 72 horas de imersão. O projeto conquistou o 1º lugar entre as equipes e recebeu premiação de R$ 6.000.",
+      "Como integrante do time da AutoCare, participei da validação da ideia, do desenvolvimento do MVP e da apresentação do pitch final durante 72 horas de imersão. O projeto conquistou o 1º lugar entre as equipes participantes.",
     descEn:
-      "As part of the AutoCare team, I helped validate the idea, build the MVP and pitch the final product during a 72-hour immersion. The project won 1st place and a R$6,000 prize.",
+      "As part of the AutoCare team, I helped validate the idea, build the MVP and pitch the final product during a 72-hour immersion. The project won 1st place among the participating teams.",
     href: "https://www.linkedin.com/feed/update/urn:li:activity:7457610548852035584/",
     hrefLabelPt: "Ver post no LinkedIn",
     hrefLabelEn: "See LinkedIn post",
