@@ -28,9 +28,9 @@ const projects: Project[] = [
     name: "Gerenciador de Tarefas",
     tag: "CLI · Back-End",
     descPt:
-      "Aplicação de linha de comando desenvolvida em JavaScript e Node.js para criar, listar, atualizar e excluir tarefas. Usa persistência de dados em arquivos locais, estruturas de dados com Map, funções assíncronas e validações de entrada — com foco em organização modular, lógica de programação e boas práticas de desenvolvimento.",
+      "Aplicação de linha de comando desenvolvida em JavaScript e Node.js para criar, listar, atualizar e excluir tarefas. Utiliza persistência de dados em arquivos locais, estruturas com Map, funções assíncronas e validações de entrada, com foco em organização modular, lógica de programação e boas práticas de desenvolvimento.",
     descEn:
-      "Command-line application built with JavaScript and Node.js to create, list, update and delete tasks. Uses local file persistence, Map data structures, async functions and input validation — focused on modular organization, programming logic and development best practices.",
+      "Command-line application built with JavaScript and Node.js to create, list, update and delete tasks. Uses local file persistence, Map data structures, async functions and input validation, focused on modular organization, programming logic and development best practices.",
     stack: ["JavaScript", "Node.js", "Map", "Async", "File I/O"],
     href: "https://github.com/rportocortes/gerenciador-de-tarefas",
   },

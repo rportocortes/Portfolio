@@ -763,6 +763,9 @@ main {
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 
 .siteFooter {
