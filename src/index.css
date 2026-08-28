@@ -764,6 +764,34 @@ main {
   line-height: 1.7;
 }
 
+.projectStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.projectStack li {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.06);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.achievementsBlock {
+  margin-top: 72px;
+}
+
+.achievementsBlock .projectFeatureList {
+  margin-top: 28px;
+}
+
 .projectLink {
   margin-top: 6px;
   display: inline-flex;

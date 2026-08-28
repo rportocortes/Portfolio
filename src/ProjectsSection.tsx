@@ -5,28 +5,48 @@ interface ProjectsSectionProps {
 interface Project {
   name: string;
   tag: string;
-  /** conquista/destaque (ex.: prêmio). Deixe "" se não houver. */
-  award: string;
   descPt: string;
   descEn: string;
+  /** stack usada no projeto (chips) */
+  stack: string[];
   /** link do projeto (GitHub, deploy...). Use "#" se ainda não tiver. */
   href: string;
 }
 
-/*
- * ⚠️ EDITE com seus projetos. Para adicionar um novo, copie um item e troque
- * os dados. O link ("Ver no GitHub") só aparece quando o `href` é real.
- */
+interface Achievement {
+  name: string;
+  award: string;
+  descPt: string;
+  descEn: string;
+  href: string;
+  hrefLabelPt: string;
+  hrefLabelEn: string;
+}
+
 const projects: Project[] = [
   {
+    name: "Gerenciador de Tarefas",
+    tag: "CLI · Back-End",
+    descPt:
+      "Aplicação de linha de comando desenvolvida em JavaScript e Node.js para criar, listar, atualizar e excluir tarefas. Usa persistência de dados em arquivos locais, estruturas de dados com Map, funções assíncronas e validações de entrada — com foco em organização modular, lógica de programação e boas práticas de desenvolvimento.",
+    descEn:
+      "Command-line application built with JavaScript and Node.js to create, list, update and delete tasks. Uses local file persistence, Map data structures, async functions and input validation — focused on modular organization, programming logic and development best practices.",
+    stack: ["JavaScript", "Node.js", "Map", "Async", "File I/O"],
+    href: "https://github.com/rportocortes/gerenciador-de-tarefas",
+  },
+];
+
+const achievements: Achievement[] = [
+  {
     name: "AutoCare",
-    tag: "Full Stack",
     award: "Startup Weekend Anápolis · 1º lugar",
     descPt:
-      "Aplicativo mobile que simplifica o cuidado com o veículo, sem precisar de conhecimento mecânico. Substitui anotações dispersas por uma experiência digital organizada, preditiva e acessível.",
+      "Como integrante do time da AutoCare, participei da validação da ideia, do desenvolvimento do MVP e da apresentação do pitch final durante 72 horas de imersão. O projeto conquistou o 1º lugar entre as equipes e recebeu premiação de R$ 6.000.",
     descEn:
-      "Mobile app that simplifies vehicle care without requiring mechanical knowledge. Replaces scattered notes with an organized, predictive and accessible digital experience.",
-    href: "#",
+      "As part of the AutoCare team, I helped validate the idea, build the MVP and pitch the final product during a 72-hour immersion. The project won 1st place and a R$6,000 prize.",
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7457610548852035584/",
+    hrefLabelPt: "Ver post no LinkedIn",
+    hrefLabelEn: "See LinkedIn post",
   },
 ];
 
@@ -40,9 +60,8 @@ const comets = [
 ];
 
 /**
- * Seção "Projetos" (terceira parte): cards compactos em grade, com mini cometas
- * caindo na diagonal ao fundo. Cada card mostra índice, etiqueta, conquista,
- * descrição e o link.
+ * Seção "Projetos": um projeto em destaque (Gerenciador de Tarefas) + subseção
+ * "Conquistas" com AutoCare/Startup Weekend e link para o post no LinkedIn.
  */
 function ProjectsSection({ language }: ProjectsSectionProps) {
   const pt = language === "pt";
@@ -81,13 +100,15 @@ function ProjectsSection({ language }: ProjectsSectionProps) {
 
                 <h3 className="projectFeatureName">{project.name}</h3>
 
-                {project.award && (
-                  <span className="projectAward">🏅 {project.award}</span>
-                )}
-
                 <p className="projectFeatureDesc">
                   {pt ? project.descPt : project.descEn}
                 </p>
+
+                <ul className="projectStack" aria-label={pt ? "Stack" : "Stack"}>
+                  {project.stack.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
 
                 {isLink && (
                   <a
@@ -111,6 +132,49 @@ function ProjectsSection({ language }: ProjectsSectionProps) {
               </article>
             );
           })}
+        </div>
+
+        <div className="achievementsBlock">
+          <span className="stackLabel">
+            {pt ? "Conquistas" : "Achievements"}
+          </span>
+
+          <div className="projectFeatureList">
+            {achievements.map((item) => (
+              <article key={item.name} className="projectFeature">
+                <div className="projectFeatureTop">
+                  <span>🏆</span>
+                  <span>{item.name}</span>
+                </div>
+
+                <h3 className="projectFeatureName">{item.name}</h3>
+
+                <span className="projectAward">🏅 {item.award}</span>
+
+                <p className="projectFeatureDesc">
+                  {pt ? item.descPt : item.descEn}
+                </p>
+
+                <a
+                  className="projectLink"
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {pt ? item.hrefLabelPt : item.hrefLabelEn}
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M7 17L17 7M17 7H8M17 7v9"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
