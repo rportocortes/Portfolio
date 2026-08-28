@@ -184,6 +184,15 @@ function App() {
 
         <ProjectsSection language={language} />
       </main>
+
+      <footer className="siteFooter">
+        <p>
+          © {new Date().getFullYear()} Rafael Porto.{" "}
+          {language === "pt"
+            ? "Todos os direitos reservados."
+            : "All rights reserved."}
+        </p>
+      </footer>
     </div>
   );
 }
