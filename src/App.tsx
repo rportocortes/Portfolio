@@ -32,7 +32,7 @@ function App() {
       roleHighlight: "Full Stack",
       rolePart: "Developer",
       description:
-        "Estou construindo minha base em desenvolvimento backend, estudando JavaScript, React, banco de dados, APIs e automação de processos.",
+        "Desenvolvedor Back-End com foco em JavaScript, Node.js e PostgreSQL. Trabalho com automação de processos, integração de sistemas e resolução de falhas utilizando n8n, aplicando lógica de programação, banco de dados e Git em projetos pessoais e profissionais.",
       projectsBtn: "Ver Projetos",
       skillsBtn: "Ver Habilidades",
     },
@@ -42,7 +42,7 @@ function App() {
       roleHighlight: "Full Stack",
       rolePart: "Developer",
       description:
-        "Building my foundation in backend development, studying JavaScript, React, databases, APIs and process automation.",
+        "Back-End developer focused on JavaScript, Node.js and PostgreSQL. I work with process automation, system integration and troubleshooting using n8n, applying programming logic, databases and Git across personal and professional projects.",
       projectsBtn: "View Projects",
       skillsBtn: "View Skills",
     },
@@ -160,11 +160,17 @@ function App() {
                 </svg>
               </a>
 
-              <a href="#" className="secondaryButton">
+              <a
+                href="/Rafael-Porto-CV.pdf"
+                className="secondaryButton"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
                 </svg>
-                Baixar CV
+                {language === "pt" ? "Baixar CV" : "Download CV"}
               </a>
             </div>
           </div>

@@ -57,6 +57,10 @@ const comets = [
   { top: "5%", left: "70%", delay: 2.6, duration: 3.8 },
   { top: "34%", left: "88%", delay: 1.4, duration: 4.4 },
   { top: "26%", left: "52%", delay: 3.2, duration: 4.1 },
+  // faixa próxima da divisão entre Projetos e Conquistas
+  { top: "58%", left: "12%", delay: 1.1, duration: 4.2 },
+  { top: "62%", left: "78%", delay: 2.9, duration: 3.6 },
+  { top: "70%", left: "42%", delay: 0.4, duration: 4.5 },
 ];
 
 /**
@@ -135,25 +139,6 @@ function ProjectsSection({ language }: ProjectsSectionProps) {
         </div>
 
         <div className="achievementsBlock">
-          <div className="dividerComets" aria-hidden="true">
-            {[
-              { left: "18%", delay: 0.2, duration: 3.2 },
-              { left: "42%", delay: 1.6, duration: 3.8 },
-              { left: "68%", delay: 2.4, duration: 3.4 },
-              { left: "86%", delay: 0.9, duration: 4.1 },
-            ].map((c, i) => (
-              <span
-                key={i}
-                className="comet"
-                style={{
-                  left: c.left,
-                  animationDelay: `${c.delay}s`,
-                  animationDuration: `${c.duration}s`,
-                }}
-              />
-            ))}
-          </div>
-
           <span className="stackLabel">
             {pt ? "Conquistas" : "Achievements"}
           </span>

@@ -814,46 +814,16 @@ main {
   opacity: 0.6;
 }
 
+/* faixa de cometas logo abaixo da linha divisória — usa o mesmo .comet
+   (diagonal 135deg) da seção Projetos, para manter o padrão visual. */
 .dividerComets {
   position: absolute;
-  top: 0;
+  top: 24px;
   left: 0;
   right: 0;
   height: 60px;
   overflow: hidden;
   pointer-events: none;
-}
-
-.dividerComets .comet {
-  position: absolute;
-  top: -10px;
-  width: 2px;
-  height: 60px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.7),
-    transparent
-  );
-  animation: dividerCometFall linear infinite;
-  opacity: 0;
-}
-
-@keyframes dividerCometFall {
-  0% {
-    transform: translateY(-40px) rotate(20deg);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(80px) rotate(20deg);
-    opacity: 0;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
