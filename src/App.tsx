@@ -32,7 +32,7 @@ function App() {
       roleHighlight: "Full Stack",
       rolePart: "Developer",
       description:
-        "Desenvolvedor de Software voltado para a criação de produtos digitais eficientes e escaláveis. Especializado na construção de APIs resilientes, modelagem de dados e automação de processos de alta performance com JavaScript, Node.js e PostgreSQL.",
+        "Desenvolvedor de Software voltado para a criação de produtos digitais eficientes e escaláveis. Especializado na construção de APIs resilientes, modelagem de dados e programação gráfica de alta performance.",
       projectsBtn: "Ver Projetos",
       skillsBtn: "Ver Habilidades",
     },
@@ -42,7 +42,7 @@ function App() {
       roleHighlight: "Full Stack",
       rolePart: "Developer",
       description:
-        "Software developer focused on building efficient and scalable digital products. Specialized in resilient APIs, data modeling and high-performance process automation with JavaScript, Node.js and PostgreSQL.",
+        "Software developer focused on building efficient and scalable digital products. Specialized in resilient APIs, data modeling and high-performance graphics programming.",
       projectsBtn: "View Projects",
       skillsBtn: "View Skills",
     },
