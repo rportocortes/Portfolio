@@ -52,15 +52,30 @@ const achievements: Achievement[] = [
 
 // mini cometas do fundo (minimalista): poucos e espalhados. O card é opaco,
 // então os que cruzam a área dele ficam escondidos atrás — nunca por cima.
+// Cometas espalhados por toda a seção. Variação de tempo/atraso evita o
+// efeito de "chuva sincronizada" e mantém a sensação orgânica.
 const comets = [
-  { top: "3%", left: "16%", delay: 0.6, duration: 4 },
-  { top: "5%", left: "70%", delay: 2.6, duration: 3.8 },
-  { top: "34%", left: "88%", delay: 1.4, duration: 4.4 },
-  { top: "26%", left: "52%", delay: 3.2, duration: 4.1 },
+  { top: "3%", left: "8%", delay: 0.6, duration: 4.0 },
+  { top: "6%", left: "34%", delay: 2.1, duration: 4.4 },
+  { top: "4%", left: "62%", delay: 3.4, duration: 3.6 },
+  { top: "9%", left: "88%", delay: 1.2, duration: 4.2 },
+  { top: "18%", left: "22%", delay: 2.8, duration: 3.9 },
+  { top: "22%", left: "70%", delay: 0.9, duration: 4.6 },
+  { top: "28%", left: "46%", delay: 3.7, duration: 4.1 },
+  { top: "32%", left: "94%", delay: 1.6, duration: 3.7 },
+  { top: "40%", left: "6%", delay: 2.4, duration: 4.3 },
+  { top: "44%", left: "58%", delay: 0.3, duration: 4.5 },
+  { top: "48%", left: "80%", delay: 3.1, duration: 3.8 },
   // faixa próxima da divisão entre Projetos e Conquistas
   { top: "58%", left: "12%", delay: 1.1, duration: 4.2 },
-  { top: "62%", left: "78%", delay: 2.9, duration: 3.6 },
-  { top: "70%", left: "42%", delay: 0.4, duration: 4.5 },
+  { top: "60%", left: "38%", delay: 2.7, duration: 4.0 },
+  { top: "62%", left: "78%", delay: 0.5, duration: 3.6 },
+  { top: "66%", left: "26%", delay: 3.3, duration: 4.4 },
+  { top: "70%", left: "56%", delay: 1.9, duration: 3.9 },
+  { top: "74%", left: "88%", delay: 0.7, duration: 4.3 },
+  { top: "82%", left: "18%", delay: 2.5, duration: 4.1 },
+  { top: "86%", left: "64%", delay: 3.9, duration: 3.7 },
+  { top: "90%", left: "42%", delay: 1.4, duration: 4.5 },
 ];
 
 /**
