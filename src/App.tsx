@@ -32,7 +32,7 @@ function App() {
       roleHighlight: "Full Stack",
       rolePart: "Developer",
       description:
-        "Desenvolvedor Back-End focado em construir sistemas escaláveis e integrações resilientes. Com experiência em JavaScript, Node.js e PostgreSQL, atuo no desenvolvimento de APIs, modelagem de dados e automação de processos com n8n — entregando soluções organizadas, eficientes e sustentáveis.",
+        "Desenvolvedor Back-End focado em construir sistemas escaláveis e integrações resilientes. Com experiência em Desenvolvimento em JavaScript, Node.js e PostgreSQL, atuo na criação de APIs, modelagem de dados e automação de processos com n8n entregando soluções organizadas, eficientes e sustentáveis.",
       projectsBtn: "Ver Projetos",
       skillsBtn: "Ver Habilidades",
     },
@@ -42,7 +42,7 @@ function App() {
       roleHighlight: "Full Stack",
       rolePart: "Developer",
       description:
-        "Back-End developer focused on building scalable systems and resilient integrations. With hands-on experience in JavaScript, Node.js and PostgreSQL, I develop APIs, data models and process automation with n8n — delivering organized, efficient and sustainable solutions.",
+        "Back-End developer focused on building scalable systems and resilient integrations. With hands-on experience in Development with JavaScript, Node.js and PostgreSQL, I work on APIs, data modeling and process automation with n8n delivering organized, efficient and sustainable solutions.",
       projectsBtn: "View Projects",
       skillsBtn: "View Skills",
     },
