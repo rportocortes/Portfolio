@@ -263,7 +263,7 @@ main {
   max-width: 820px;
   position: relative;
   z-index: 2;
-  transform: translateY(-9vh); /* sobe levemente o bloco para priorizar conteúdo */
+  transform: translateY(-3vh); /* sobe levemente o bloco sem cortar o eyebrow */
 }
 
 .tag {
@@ -278,7 +278,7 @@ main {
 
 .hero h1 {
   max-width: 820px;
-  font-size: clamp(72px, 8vw, 108px);
+  font-size: clamp(56px, 6vw, 84px);
   line-height: 1;
   letter-spacing: -0.02em;
   word-spacing: -0.1em; /* puxa "Porto" para perto de "Rafael" */
